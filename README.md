@@ -1,8 +1,11 @@
-# Techdegree Project 2
-I created a profile page based on the mock up given on the project files.
+# Code Louisville Java Script Project
+I created a profile page, and added a comments form.
 
-## Features Expectations
-Features included to satisfy all the Meets, and Exceeds Expectations requirements. If the project does not meet the exceeds expectations, I am willin got accept a meets expectation evaluation.
+## Features Included
+1. Created a form to take name, comment, and email. Information is posted to a document by Ajax.
+2. Email is verified with regex.
+3. Function that takes two values and outputs a result.
+4. Retrieve data from a music gengre generator api, and retrieve info with a fetch call. 
 
 ## How to run the project
 1. Clone the repo on to your computer.
