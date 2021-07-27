@@ -10,4 +10,4 @@ I created a profile page, and added a comments form.
 ## How to run the project
 1. Clone the repo on to your computer.
 2. Open the index.html file in a web browser.
-3. The project can also be viewed from https://floodadosious34.github.io/techdegree-project-2/
+3. The project can also be viewed from https://floodadosious34.github.io/James-Flood-Profile-Website/
