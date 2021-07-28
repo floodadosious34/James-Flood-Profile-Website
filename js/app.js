@@ -6,10 +6,11 @@ const emailInput = document.getElementById("email");
 // ------------------------------------------
 //  FETCH FUNCTIONS
 // ------------------------------------------
-fetch('https://binaryjazz.us/wp-json/genrenator/v1/genre/')
-.then(response => response.json())
-.then(data => generateGenre(data))
-
+function getResponse () {
+  fetch('https://binaryjazz.us/wp-json/genrenator/v1/genre/')
+  .then(response => response.json())
+  .then(data => generateGenre(data))
+}
 // ------------------------------------------
 //  HELPER FUNCTIONS
 // ------------------------------------------
@@ -35,6 +36,24 @@ function isValidEmail(emailInput) {
 // ------------------------------------------
 //  EVENT LISTENERS
 // ------------------------------------------
+var xhr = new XMLHttpRequest();
+xhr.onreadystatechange = function () {
+  if (xhr.readyState === 4) {
+    if (xhr.status === 200) {
+    document.getElementById('responseBlock').innerHTML = xhr.responseText;
+    } else {
+      alert(xhr.statusText);
+    }
+  }
+};
+xhr.open('GET', 'example1.html');
+function sendAJAX() {
+  xhr.send();
+  document.getElementById('submit').style.display = "none";
+  getResponse ();
+}
+
+
 function showOrHide(show, element) {
     // show element when show is true, hide when false
     if (show) {

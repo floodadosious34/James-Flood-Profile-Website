@@ -83,7 +83,7 @@
     <div class="contact" id="contact">
         <h3>CONTACT</h3>
         <p>If you're interested in chatting or want more information about what I've been working in, I'd love to hear from you!</p>
-        <form action="example.json" method="post">
+        <form action="#" onsubmit="">
             <label for="name">Name</label>
             <input class="u-full-width" id="name" type="text">
           
@@ -94,9 +94,10 @@
                 <input id="email" name="email" type="text">
                 <span>Must be a valid email address</span>
             </p>
-            <button type="submit" id="submit">Submit</button>
+            <button id="submit" onclick="sendAJAX()">Submit</button>
         </form>
         <div id="block"></div>
+        <div id="responseBlock"></div>
         <span>Phone +1 (916) 804-7864</span><br>
         <span>Email jflood@floodpianotuning.com</span>
     </div>
