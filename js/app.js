@@ -1,16 +1,16 @@
 const username = document.getElementById('name');
 const card = document.getElementById('block'); 
 const form = document.querySelector('form');
-const emailInput = document.getElementById("email");
+const emailInput = document.getElementById('email');
 
 // ------------------------------------------
 //  FETCH FUNCTIONS
 // ------------------------------------------
-function getResponse () {
-  fetch('https://binaryjazz.us/wp-json/genrenator/v1/genre/')
-  .then(response => response.json())
-  .then(data => generateGenre(data))
+function getResponse (url) {
+   return fetch(url)
+            .then(res => res.json())
 }
+
 // ------------------------------------------
 //  HELPER FUNCTIONS
 // ------------------------------------------
@@ -22,14 +22,30 @@ function generateGenre(data) {
     card.innerHTML = html;
 }
 
+// Wantged to fetch from this json file i created but couldn't get it running.
+function generateResponse(data) {
+  const response = data;
+
+}
+
+
+
 
 // ------------------------------------------
 //  Validtors
 // ------------------------------------------
+// Regex for email validation.
 function isValidEmail(emailInput) {
     return /^[^@]+@[^@.]+\.[a-z]+$/i.test(emailInput);
 }
 
+function checkStatus(response) {
+  if (response.ok) {
+    return Promise.resolve(response);
+  } else {
+    return Promise.reject(new Error(response.statusText));
+  }
+}
 
 
 
@@ -40,18 +56,25 @@ var xhr = new XMLHttpRequest();
 xhr.onreadystatechange = function () {
   if (xhr.readyState === 4) {
     if (xhr.status === 200) {
-    document.getElementById('responseBlock').innerHTML = xhr.responseText;
+    document.getElementById('responseBlock').innerHTML = xhr.responseText; //Displays info from example1.html file into html.
     } else {
       alert(xhr.statusText);
     }
   }
+
+
 };
 xhr.open('GET', 'example1.html');
 function sendAJAX() {
   xhr.send();
   document.getElementById('submit').style.display = "none";
-  getResponse ();
-}
+  //Retireve data from binary jazz api with fetch call.
+  getResponse('https://binaryjazz.us/wp-json/genrenator/v1/genre/')
+    .then(data => generateGenre(data))
+
+  getResponse('data/example.json')
+    .then(data => generateResponse(data))
+};
 
 
 function showOrHide(show, element) {
@@ -74,9 +97,29 @@ function showOrHide(show, element) {
   }
   
   emailInput.addEventListener("input", listener(isValidEmail));
+  form.addEventListener('submit', postInfo);
   
 
 // ------------------------------------------
 //  POST DATA
 // ------------------------------------------
 
+function postInfo(e) {
+  e.preventDefault();
+  const name = document.getElementById('name').value;
+  const comment = document.getElementById('comment').value;
+
+  const config = {
+    method: 'POST',
+    headers: {
+      'Content-Type': 'application/json'
+    },
+    body: JSON.stringify({ Name: name, Contact: comment })
+  }
+
+// form values save to this api, but only on initial call. Check console log for verification of adding on to json list.
+  fetch('https://jsonplaceholder.typicode.com/comments', config)
+    .then(checkStatus)
+    .then(res => res.json())
+    .then(data => console.log(data))
+}

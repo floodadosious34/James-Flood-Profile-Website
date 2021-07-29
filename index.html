@@ -5,18 +5,18 @@
     <meta name="viewport" content="width=device-width, initial-scale=1">
     <title>James Flood Jr. Profile</title>
     <link rel="stylesheet" href="css/style.css">
-    <link rel="stylesheet" href="css/normalize.css"> <!-- Added normalize sheet -->
-    <link href='https://fonts.googleapis.com/css?family=Roboto|Droid+Sans' rel='stylesheet' type='text/css'> <!-- Added additional google font -->
+    <link rel="stylesheet" href="css/normalize.css"> 
+    <link href='https://fonts.googleapis.com/css?family=Roboto|Droid+Sans' rel='stylesheet' type='text/css'>
 </head>
 <body>
     <header class="main-header" id="home">
         <h1 class="name">James Flood Jr.</h1>
         <nav class="main-nav">
-            <ul class="nav"> <!-- Used Nav tag for navigation list -->
+            <ul class="nav"> 
                 <li><a href="#home">Home</a></li>
                 <li><a href="#portfolio">Portfolio</a></li>
                 <li><a href="#contact">Contact</a></li>
-                <li><a href="#skills">Skills</a></li> <!-- Added additional skills section to the list -->
+                <li><a href="#skills">Skills</a></li> 
             </ul>
         </nav>
     </header>
@@ -83,7 +83,7 @@
     <div class="contact" id="contact">
         <h3>CONTACT</h3>
         <p>If you're interested in chatting or want more information about what I've been working in, I'd love to hear from you!</p>
-        <form action="#" onsubmit="">
+        <form action="#" onsubmit="return false"> <!-- Created form to post -->
             <label for="name">Name</label>
             <input class="u-full-width" id="name" type="text">
           
@@ -94,9 +94,11 @@
                 <input id="email" name="email" type="text">
                 <span>Must be a valid email address</span>
             </p>
-            <button id="submit" onclick="sendAJAX()">Submit</button>
+            <button type="submit" id="submit" onclick="sendAJAX(), onSubmit()">Submit</button>
         </form>
+
         <div id="block"></div>
+        <div id="home"></div>
         <div id="responseBlock"></div>
         <span>Phone +1 (916) 804-7864</span><br>
         <span>Email jflood@floodpianotuning.com</span>
@@ -118,5 +120,6 @@
         </div>
     </footer>
     <script src="js/app.js"></script>
+    <script src="js/array.js"></script>
 </body>
 </html>
